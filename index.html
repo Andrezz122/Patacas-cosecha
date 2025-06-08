@@ -651,6 +651,69 @@ closeCartBtn.addEventListener('click', () => {
     document.getElementById('overlay').style.display = 'none';
   });
 </script>
+<script>
+  let cartCount = 0;
+  let totalCOP = 0;
+
+  const cartBtn = document.getElementById('cart-info');
+  const cartPanel = document.getElementById('cart-panel');
+  const closeCartBtn = document.getElementById('close-cart-btn');
+  const cartItemsList = document.getElementById('cart-items');
+  const cartTotalText = document.getElementById('cart-total');
+
+  const addToCartButtons = document.querySelectorAll('.btn-secondary');
+  const cartProducts = [];
+
+  function updateCartDisplay() {
+    document.getElementById('cart-count').textContent = cartCount;
+    document.getElementById('cart-total').textContent = totalCOP.toLocaleString('es-CO');
+
+    cartItemsList.innerHTML = '';
+
+    cartProducts.forEach(product => {
+      const li = document.createElement('li');
+      li.style.borderBottom = '1px solid #555';
+      li.style.padding = '5px 0';
+      li.textContent = `${product.name} - COL$ ${product.priceCOP.toLocaleString('es-CO')}`;
+      cartItemsList.appendChild(li);
+    });
+
+    cartTotalText.textContent = `Total: COL$ ${totalCOP.toLocaleString('es-CO')}`;
+  }
+
+  addToCartButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      cartCount++;
+
+      const priceText = button.parentElement.querySelector('span').textContent;
+      const copMatch = priceText.match(/COL\$ ([0-9.,]+)/);
+      let priceCOP = 0;
+
+      if (copMatch) {
+        priceCOP = parseFloat(copMatch[1].replace(/\./g, '').replace(',', '.'));
+        totalCOP += priceCOP;
+      }
+
+      const productName = button.closest('.producto-info').querySelector('h3').textContent;
+
+      cartProducts.push({
+        name: productName,
+        priceCOP: priceCOP
+      });
+
+      updateCartDisplay();
+    });
+  });
+
+  cartBtn.addEventListener('click', () => {
+    cartPanel.style.display = cartPanel.style.display === 'block' ? 'none' : 'block';
+  });
+
+  closeCartBtn.addEventListener('click', () => {
+    cartPanel.style.display = 'none';
+  });
+</script>
+
 </body>
 
 </body>
