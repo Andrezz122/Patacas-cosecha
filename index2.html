@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tienda Virtual de Juegos</title>
+  <style>
+    body {
+      background-color: #121212;
+      color: white;
+      font-family: 'Montserrat', sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+    .producto-info {
+      margin-bottom: 20px;
+      border: 1px solid #444;
+      border-radius: 8px;
+      overflow: hidden;
+      background-color: #222;
+      display: flex;
+      gap: 15px;
+      max-width: 600px;
+    }
+    .producto-info img {
+      width: 150px;
+      object-fit: cover;
+      border-right: 1px solid #444;
+    }
+    .producto-details {
+      padding: 15px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .producto-price {
+      margin-top: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .btn-secondary {
+      background-color: #f0a500;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      color: black;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+    .btn-secondary:hover {
+      background-color: #cf8c00;
+    }
+    #cart-info {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      background: #f0a500;
+      color: black;
+      padding: 10px 15px;
+      border-radius: 50px;
+      font-weight: bold;
+      cursor: pointer;
+      user-select: none;
+      z-index: 1100;
+    }
+    #cart-count {
+      background: black;
+      color: #f0a500;
+      border-radius: 50%;
+      padding: 2px 7px;
+      margin-left: 8px;
+      font-size: 0.9em;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Tienda Virtual de Juegos</h1>
+
+  <!-- Botón para mostrar carrito -->
+  <div id="cart-info">
+    🛒 Carrito <span id="cart-count">0</span>
+  </div>
+
+  <!-- Productos -->
+  <section id="productos">
+    <!-- Hollow Knight -->
+    <div class="producto-info" data-category="indie">
+      <img src="juego3.png" alt="Hollow Knight" />
+      <div class="producto-details">
+        <h3>Hollow Knight</h3>
+        <p>Una aventura épica a través de un vasto reino de insectos y héroes que se encuentra en ruinas.</p>
+        <div class="producto-price">
+          <span>COL$ 37.500 / USD $8.94</span>
+          <button class="btn-secondary">Agregar al Carrito</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Celeste -->
+    <div class="producto-info" data-category="indie">
+      <img src="juego4.png" alt="Celeste" />
+      <div class="producto-details">
+        <h3>Celeste</h3>
+        <p>Ayuda a Madeline a sobrevivir a los demonios de su interior en su viaje hasta la cima de la montaña Celeste.</p>
+        <div class="producto-price">
+          <span>COL$ 47.500 / USD $8.94</span>
+          <button class="btn-secondary">Agregar al Carrito</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hades -->
+    <div class="producto-info" data-category="indie">
+      <img src="juego5_Hades.png" alt="Hades" />
+      <div class="producto-details">
+        <h3>Hades</h3>
+        <p>Desafía al dios de los muertos y protagoniza una salvaje fuga del Inframundo.</p>
+        <div class="producto-price">
+          <span>COL$ 58.800 / USD $14.27</span>
+          <button class="btn-secondary">Agregar al Carrito</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Doom Eternal -->
+    <div class="producto-info" data-category="shooters">
+      <img src="juego1Doom_Eternal_.png" alt="Doom Eternal" />
+      <div class="producto-details">
+        <h3>Doom Eternal</h3>
+        <p>Ponte en la piel del Slayer en una épica campaña para un jugador y cruza dimensiones para detener la destrucción definitiva de la humanidad.</p>
+        <div class="producto-price">
+          <span>COL$ 120.000 / USD $29.13</span>
+          <button class="btn-secondary">Agregar al Carrito</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Metal Gear Solid -->
+    <div class="producto-info" data-category="shooters">
+      <img src="Juego10Metal_gearsolid.png" alt="METAL GEAR SOLID - Master Collection Version" />
+      <div class="producto-details">
+        <h3>METAL GEAR SOLID - Master Collection Version</h3>
+        <p>La primera entrega en 3D de la serie METAL GEAR introduce una trama de acción y sigilo.</p>
+        <div class="producto-price">
+          <span>COL$ 86.600 / USD $21.02</span>
+          <button class="btn-secondary">Agregar al Carrito</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Battlefield 2042 -->
+    <div class="producto-info" data-category="shooters">
+      <img src="juego9battlefield.png" alt="Battlefield™ 2042" />
+      <div class="producto-details">
+        <h3>Battlefield™ 2042</h3>
+        <p>Battlefield™ 2042 es un shooter en primera persona que marca el regreso a la emblemática guerra total de la franquicia.</p>
+        <div class="producto-price">
+          <span>COL$ 234.999 / USD $57.05</span>
+          <button class="btn-secondary">Agregar al Carrito</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Panel carrito -->
+  <div id="cart-panel" style="
+    display: none;
+    position: fixed;
+    top: 60px;
+    right: 20px;
+    width: 320px;
+    max-height: 400px;
+    overflow-y: auto;
+    background-color: #333;
+    color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px #f0a500;
+    padding: 15px;
+    z-index: 1000;">
+    <h3>Carrito de Compras</h3>
+    <ul id="cart-items" style="list-style: none; padding-left: 0; margin-bottom: 15px;"></ul>
+    <p id="cart-total"></p>
+    <button id="close-cart-btn" style="
+      background-color: #f0a500;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      color: black;
+      font-weight: bold;">Cerrar</button>
+  </div>
+
+  <script>
+    // Variables carrito
+    let cartCount = 0;
+    let totalCOP = 0;
+    const cartBtn = document.getElementById('cart-info');
+    const cartPanel = document.getElementById('cart-panel');
+    const closeCartBtn = document.getElementById('close-cart-btn');
+    const cartItemsList = document.getElementById('cart-items');
+    const cartTotalText = document.getElementById('cart-total');
+    const cartCountElem = document.getElementById('cart-count');
+    const addToCartButtons = document.querySelectorAll('.btn-secondary');
+    const cartProducts = [];
+
+    // Actualiza vista carrito
+    function updateCartDisplay() {
+      cartCountElem.textContent = cartCount;
+      cartItemsList.innerHTML = '';
+      cartProducts.forEach(product => {
+        const li = document.createElement('li');
+        li.style.borderBottom = '1px solid #555';
+        li.style.padding = '5px 0';
+        li.textContent = `${product.name} - COL$ ${product.priceCOP.toLocaleString('es-CO')}`;
+        cartItemsList.appendChild(li);
+      });
+      cartTotalText.textContent = `Total: COL$ ${totalCOP.toLocaleString('es-CO')}`;
+    }
+
+    // Añadir producto al carrito
+    addToCartButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        cartCount++;
+        const priceText = button.parentElement.querySelector('span').textContent;
+        const copMatch = priceText.match(/COL\$ ([0-9.,]+)/);
+        let priceCOP = 0;
+        if (copMatch) {
+          priceCOP = parseFloat(copMatch[1].replace(/\./g, '').replace(',', '.'));
+          totalCOP += priceCOP;
+        }
+        const productName = button.closest('.producto-info').querySelector('h3').textContent;
+        cartProducts.push({ name: productName, priceCOP });
+        updateCartDisplay();
+      });
+    });
+
+    // Mostrar / ocultar carrito
+    cartBtn.addEventListener('click', () => {
+      cartPanel.style.display = cartPanel.style.display === 'block' ? 'none' : 'block';
+    });
+
+    // Cerrar carrito
+    closeCartBtn.addEventListener('click', () => {
+      cartPanel.style.display = 'none';
+    });
+  </script>
+</body>
+</html>
