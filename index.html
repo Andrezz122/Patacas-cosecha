@@ -7,6 +7,36 @@
   <title>Tienda Virtual Profesional</title>
   <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,600&display=swap" rel="stylesheet">
   <style>
+    {
+    font-family: sans-serif;
+    padding: 20px;
+  }
+
+  #btn-indie {
+    padding: 10px 20px;
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+
+  .contenedor-productos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+  }
+
+  .producto-info {
+    display: none;
+    border: 1px solid #ccc;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+  }
+
+  .producto-info h3 {
+    margin-top: 0;
+  }
     .producto-info {
   display: none;
 }
@@ -384,7 +414,7 @@
   </section>
 
   <!-- Productos -->
-   <div class="producto-info" data-category="indie"></div>
+   <div class="producto-info" data-category="indie">
   <section id="productos" class="productos">
     <div class="container">
       <h2>Nuestros Productos Destacados</h2>
@@ -402,6 +432,8 @@
         </div>
         </div>
         </div>
+      </div>
+         <div class="producto-info" data-category="indie">
         <div class="producto-card">
           <img src="juego2.png" alt="UNDERTALE" />
           <div class="producto-info">
@@ -413,7 +445,8 @@
             </div>
           </div>
         </div>
-        <div class="producto-info" data-category="indie"></div>
+        </div>
+        <div class="producto-info" data-category="indie">
         <div class="producto-card">
           <img src="juego3.png" alt="Hollow Knight" />
           <div class="producto-info">
@@ -422,11 +455,11 @@
             <div class="producto-price">
               <span>COL$ 37.500 / USD $8.94</span>
               <button class="btn-secondary">Agregar al Carrito</button>
-               
+               </div>
             </div>
           </div>
         </div>
-        <div class="producto-info" data-category="indie"></div>
+        <div class="producto-info" data-category="indie">
         <div class="producto-card">
           <img src="juego4.png"alt="Celeste" />
           <div class="producto-info">
@@ -437,6 +470,7 @@
              <button class="btn-secondary">Agregar al Carrito</button>
             </div>
           </div>
+        </div>
         </div>
         <!-- Agrega más productos aquí -->
       </div>
