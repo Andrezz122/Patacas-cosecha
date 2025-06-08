@@ -7,6 +7,53 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+    <!-- Contenedor para los formularios -->
+<div id="auth-container" style="max-width: 400px; margin: 20px auto; background:#222; padding:20px; border-radius:8px;">
+
+  <!-- Tabs para cambiar entre registro e inicio -->
+  <div style="display:flex; justify-content:center; margin-bottom: 15px;">
+    <button id="show-register" style="flex:1; padding:10px; background:#f0a500; border:none; font-weight:bold; cursor:pointer;">Registrarse</button>
+    <button id="show-login" style="flex:1; padding:10px; background:#444; border:none; color:#bbb; font-weight:bold; cursor:pointer;">Iniciar Sesión</button>
+  </div>
+
+  <!-- Formulario Registro -->
+  <form id="register-form" style="display:block; color:white;">
+    <label>Nombre*</label><br />
+    <input type="text" name="nombre" required style="width:100%; padding:8px; margin-bottom:10px; border-radius:4px; border:none;" />
+    
+    <label>Apellido*</label><br />
+    <input type="text" name="apellido" required style="width:100%; padding:8px; margin-bottom:10px; border-radius:4px; border:none;" />
+    
+    <label>Edad*</label><br />
+    <input type="number" name="edad" min="1" max="120" required style="width:100%; padding:8px; margin-bottom:10px; border-radius:4px; border:none;" />
+    
+    <label>Correo Electrónico*</label><br />
+    <input type="email" name="correo" required style="width:100%; padding:8px; margin-bottom:10px; border-radius:4px; border:none;" />
+    
+    <label>Teléfono*</label><br />
+    <input type="tel" name="telefono" required pattern="[0-9]{7,15}" placeholder="Solo números" style="width:100%; padding:8px; margin-bottom:10px; border-radius:4px; border:none;" />
+    
+    <label>Contraseña*</label><br />
+    <input type="password" name="password" required style="width:100%; padding:8px; margin-bottom:10px; border-radius:4px; border:none;" />
+    
+    <label>Usuario (opcional)</label><br />
+    <input type="text" name="usuario" style="width:100%; padding:8px; margin-bottom:15px; border-radius:4px; border:none;" />
+    
+    <button type="submit" style="width:100%; background:#f0a500; border:none; padding:10px; font-weight:bold; cursor:pointer; border-radius:5px; color:black;">Registrar</button>
+  </form>
+
+  <!-- Formulario Login -->
+  <form id="login-form" style="display:none; color:white;">
+    <label>Correo Electrónico</label><br />
+    <input type="email" name="correo" required style="width:100%; padding:8px; margin-bottom:10px; border-radius:4px; border:none;" />
+    
+    <label>Contraseña</label><br />
+    <input type="password" name="password" required style="width:100%; padding:8px; margin-bottom:15px; border-radius:4px; border:none;" />
+    
+    <button type="submit" style="width:100%; background:#f0a500; border:none; padding:10px; font-weight:bold; cursor:pointer; border-radius:5px; color:black;">Iniciar Sesión</button>
+  </form>
+</div>
+
 
   <h1>Tienda Virtual de Juegos</h1>
 
@@ -209,5 +256,41 @@
       window.location.href = 'pagina de compra.html';
     });
   </script>
+  <script>
+  const showRegisterBtn = document.getElementById('show-register');
+  const showLoginBtn = document.getElementById('show-login');
+  const registerForm = document.getElementById('register-form');
+  const loginForm = document.getElementById('login-form');
+
+  showRegisterBtn.addEventListener('click', () => {
+    registerForm.style.display = 'block';
+    loginForm.style.display = 'none';
+    showRegisterBtn.style.backgroundColor = '#f0a500';
+    showLoginBtn.style.backgroundColor = '#444';
+    showLoginBtn.style.color = '#bbb';
+    showRegisterBtn.style.color = 'black';
+  });
+
+  showLoginBtn.addEventListener('click', () => {
+    loginForm.style.display = 'block';
+    registerForm.style.display = 'none';
+    showLoginBtn.style.backgroundColor = '#f0a500';
+    showRegisterBtn.style.backgroundColor = '#444';
+    showRegisterBtn.style.color = '#bbb';
+    showLoginBtn.style.color = 'black';
+  });
+
+  // Opcional: Validación simple y prevent default (aquí solo para que no recargue la página)
+  registerForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    alert('¡Registro enviado! (Aquí procesarías los datos)');
+  });
+
+  loginForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    alert('¡Inicio de sesión enviado! (Aquí validarías el usuario)');
+  });
+</script>
+
 </body>
 </html>
