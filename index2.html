@@ -900,7 +900,7 @@
   <div class="modal-content">
     <span class="close" data-target="modal-register">&times;</span>
     <h2 style="color:#f0a500; text-align:center;">Registrarse</h2>
-    <form id="register-form">
+    <form id="register-form" action="procesar_registro.php" method="POST">
       <label>Nombre*</label><br />
       <input type="text" name="nombre" required /><br />
       
@@ -932,7 +932,7 @@
   <div class="modal-content">
     <span class="close" data-target="modal-login">&times;</span>
     <h2 style="color:#f0a500; text-align:center;">Iniciar Sesión</h2>
-    <form id="login-form">
+    <form id="login-form" action="procesar_login.php" method="POST">
       <label>Correo Electrónico</label><br />
       <input type="email" name="correo" required /><br />
       
@@ -1033,12 +1033,6 @@
     });
   };
 
-  // Evitar que el formulario recargue y mostrar alerta (para prueba)
-  document.getElementById('register-form').onsubmit = (e) => {
-    e.preventDefault();
-    alert('¡Registro enviado!');
-    document.getElementById('modal-register').style.display = 'none';
-  };
 
   document.getElementById('login-form').onsubmit = (e) => {
     e.preventDefault();
