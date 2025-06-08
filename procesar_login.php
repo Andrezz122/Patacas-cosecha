@@ -1,6 +1,6 @@
 <?php
 // Conexión a la base de datos
-$conexion = new mysqli("localhost", "tu_usuario", "tu_contraseña", "tu_base_de_datos");
+$conexion = new mysqli("localhost", " root@localhost", "", "tienda_videojuegos");
 if ($conexion->connect_error) {
     die("Error de conexión: " . $conexion->connect_error);
 }
