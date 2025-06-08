@@ -718,6 +718,21 @@ closeCartBtn.addEventListener('click', () => {
     cartPanel.style.display = 'none';
   });
 </script>
+<script>
+  const indieBtn = document.getElementById('btn-indie');
+  const productos = document.querySelectorAll('.producto-info');
+
+  indieBtn.addEventListener('click', () => {
+    productos.forEach(producto => {
+      const categoria = producto.dataset.category;
+      if (categoria === 'indie') {
+        producto.style.display = 'block';
+      } else {
+        producto.style.display = 'none';
+      }
+    });
+  });
+</script>
 
 </body> 
 
