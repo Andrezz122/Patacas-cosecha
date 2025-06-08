@@ -75,6 +75,72 @@
       font-size: 0.9em;
       vertical-align: middle;
     }
+    #cart-panel {
+      display: none;
+      position: fixed;
+      top: 60px;
+      right: 20px;
+      width: 320px;
+      max-height: 400px;
+      overflow-y: auto;
+      background-color: #333;
+      color: white;
+      border-radius: 8px;
+      box-shadow: 0 0 10px #f0a500;
+      padding: 15px;
+      z-index: 1000;
+    }
+    #cart-items {
+      list-style: none;
+      padding-left: 0;
+      margin-bottom: 15px;
+    }
+    #cart-items li {
+      border-bottom: 1px solid #555;
+      padding: 5px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .remove-btn {
+      background: transparent;
+      border: none;
+      color: #f04e4e;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 1.1em;
+      padding: 0 5px;
+    }
+    #buy-btn {
+      background-color: #28a745;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      color: white;
+      font-weight: bold;
+      width: 100%;
+      margin-top: 10px;
+      transition: background-color 0.3s ease;
+    }
+    #buy-btn:hover {
+      background-color: #218838;
+    }
+    #close-cart-btn {
+      background-color: #f0a500;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      color: black;
+      font-weight: bold;
+      margin-top: 10px;
+      width: 100%;
+      transition: background-color 0.3s ease;
+    }
+    #close-cart-btn:hover {
+      background-color: #cf8c00;
+    }
   </style>
 </head>
 <body>
@@ -168,35 +234,15 @@
   </section>
 
   <!-- Panel carrito -->
-  <div id="cart-panel" style="
-    display: none;
-    position: fixed;
-    top: 60px;
-    right: 20px;
-    width: 320px;
-    max-height: 400px;
-    overflow-y: auto;
-    background-color: #333;
-    color: white;
-    border-radius: 8px;
-    box-shadow: 0 0 10px #f0a500;
-    padding: 15px;
-    z-index: 1000;">
+  <div id="cart-panel">
     <h3>Carrito de Compras</h3>
-    <ul id="cart-items" style="list-style: none; padding-left: 0; margin-bottom: 15px;"></ul>
+    <ul id="cart-items"></ul>
     <p id="cart-total"></p>
-    <button id="close-cart-btn" style="
-      background-color: #f0a500;
-      border: none;
-      padding: 8px 15px;
-      border-radius: 5px;
-      cursor: pointer;
-      color: black;
-      font-weight: bold;">Cerrar</button>
+    <button id="buy-btn">Comprar</button>
+    <button id="close-cart-btn">Cerrar</button>
   </div>
 
   <script>
-    // Variables carrito
     let cartCount = 0;
     let totalCOP = 0;
     const cartBtn = document.getElementById('cart-info');
@@ -206,47 +252,73 @@
     const cartTotalText = document.getElementById('cart-total');
     const cartCountElem = document.getElementById('cart-count');
     const addToCartButtons = document.querySelectorAll('.btn-secondary');
+    const buyBtn = document.getElementById('buy-btn');
+
+    // Guardamos los productos en un array
     const cartProducts = [];
 
-    // Actualiza vista carrito
     function updateCartDisplay() {
+      cartCount = cartProducts.length;
       cartCountElem.textContent = cartCount;
+
+      // Limpiamos lista
       cartItemsList.innerHTML = '';
-      cartProducts.forEach(product => {
+
+      totalCOP = 0;
+
+      cartProducts.forEach((product, index) => {
+        totalCOP += product.priceCOP;
         const li = document.createElement('li');
-        li.style.borderBottom = '1px solid #555';
-        li.style.padding = '5px 0';
+
         li.textContent = `${product.name} - COL$ ${product.priceCOP.toLocaleString('es-CO')}`;
+
+        // Botón eliminar
+        const removeBtn = document.createElement('button');
+        removeBtn.textContent = '×';
+        removeBtn.className = 'remove-btn';
+        removeBtn.title = 'Eliminar producto';
+        removeBtn.addEventListener('click', () => {
+          cartProducts.splice(index, 1);
+          updateCartDisplay();
+        });
+
+        li.appendChild(removeBtn);
         cartItemsList.appendChild(li);
       });
+
       cartTotalText.textContent = `Total: COL$ ${totalCOP.toLocaleString('es-CO')}`;
     }
 
-    // Añadir producto al carrito
     addToCartButtons.forEach(button => {
       button.addEventListener('click', () => {
-        cartCount++;
         const priceText = button.parentElement.querySelector('span').textContent;
         const copMatch = priceText.match(/COL\$ ([0-9.,]+)/);
         let priceCOP = 0;
         if (copMatch) {
           priceCOP = parseFloat(copMatch[1].replace(/\./g, '').replace(',', '.'));
-          totalCOP += priceCOP;
         }
         const productName = button.closest('.producto-info').querySelector('h3').textContent;
+
         cartProducts.push({ name: productName, priceCOP });
         updateCartDisplay();
       });
     });
 
-    // Mostrar / ocultar carrito
     cartBtn.addEventListener('click', () => {
       cartPanel.style.display = cartPanel.style.display === 'block' ? 'none' : 'block';
     });
 
-    // Cerrar carrito
     closeCartBtn.addEventListener('click', () => {
       cartPanel.style.display = 'none';
+    });
+
+    buyBtn.addEventListener('click', () => {
+      if(cartProducts.length === 0){
+        alert('Tu carrito está vacío.');
+        return;
+      }
+      // Redirigir a la página de compra
+      window.location.href = 'compra.html';
     });
   </script>
 </body>
