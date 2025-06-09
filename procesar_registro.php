@@ -1,11 +1,11 @@
 
 <?php
 $servername = "localhost";
-$database = "observador";
+$database = "tienda_juegos";
 $username = "root";
-$password = "tienda_juegos";
+$password = "";
 
-$conect = mysqli_connect($servername, $username, $password, $database);
+$conect = mysqli_connect($servername, $database, $username, $password);
 
 if (!$conect) {
 	die("conexion fallida: " .mysqli_connect_error());
