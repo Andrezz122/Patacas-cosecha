@@ -944,9 +944,9 @@ $telefono=$_POST['telefono'];
 $password=$_POST['password'];
 $usuario=$_POST['usuario'];
 	
-$query=mysqli_query ($conect,"INSERT INTO usuarios VALUES('','$nombre','$apellido','$edad','$correo','$telefono','$password','$usuario')");
+$insertarDatos="INSERT INTO usuarios VALUES('','$nombre','$apellido','$edad','$correo','$telefono','$password','$usuario')";
 
-$ejecutarinsertar
+$ejecutarInsertar=mysqli_query ($enlace,$insertarDatos);
 }
 ?>
 <!-- Modal Login -->
