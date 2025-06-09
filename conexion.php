@@ -1,6 +1,6 @@
 <?php
 $servername = "localhost";
-$database = "tienda_virtual";
+$database = "tienda_juegos";
 $username = "root";
 $password = "";
 
