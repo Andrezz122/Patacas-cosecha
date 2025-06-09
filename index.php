@@ -910,45 +910,30 @@
     <h2 style="color:#f0a500; text-align:center;">Registrarse</h2>
     <form id="register-form" action="procesar_registro.php" method="POST">
       <label>Nombre*</label><br />
-      <input type="text" name="nombre" required /><br />
+      <input type="text" name="caja1" required /><br />
       
       <label>Apellido*</label><br />
-      <input type="text" name="apellido" required /><br />
+      <input type="text" name="caja2" required /><br />
       
       <label>Edad*</label><br />
-      <input type="number" name="edad" min="1" max="120" required /><br />
+      <input type="number" name="caja3" min="1" max="120" required /><br />
       
       <label>Correo Electrónico*</label><br />
-      <input type="email" name="correo" required /><br />
+      <input type="email" name="caja4" required /><br />
       
       <label>Teléfono*</label><br />
-      <input type="tel" name="telefono" required pattern="[0-9]{7,15}" placeholder="Solo números" /><br />
+      <input type="tel" name="caja5" required pattern="[0-9]{7,15}" placeholder="Solo números" /><br />
       
       <label>Contraseña*</label><br />
-      <input type="password" name="password" required /><br />
+      <input type="password" name="caja6" required /><br />
       
       <label>Usuario (opcional)</label><br />
-      <input type="text" name="usuario" /><br />
+      <input type="text" name="caja7" /><br />
       
       <button type="submit">Registrar</button>
     </form>
   </div>
 </div>
-<?php
-if(isset($_POST['Registrar'])){
-$nombre=$_POST['nombre'];
-$apellido=$_POST['apellido'];
-$edad=$_POST['edad'];
-$correo=$_POST['correo'];
-$telefono=$_POST['telefono']; 
-$password=$_POST['password'];
-$usuario=$_POST['usuario'];
-	
-$insertarDatos="INSERT INTO usuarios VALUES('','$nombre','$apellido','$edad','$correo','$telefono','$password','$usuario')";
-
-$ejecutarInsertar=mysqli_query ($conect,$insertarDatos);
-}
-?>
 <!-- Modal Login -->
 <div id="modal-login" class="modal" style="display:none;">
   <div class="modal-content">
