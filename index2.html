@@ -1,12 +1,18 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Tienda Virtual de Juegos</title>
+  <meta name="description" content="Tienda Premium de Videojuegos - Compra juegos de acción, aventura, deportes y más." />
+  <meta name="theme-color" content="#f0a500" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
   <link rel="stylesheet" href="styles.css" />
+  <title>Tienda Premium de Videojuegos</title>
 </head>
+
 <body>
   <h1>Tienda Virtual de Juegos</h1>
 
@@ -1040,6 +1046,10 @@
     alert('¡Inicio de sesión enviado!');
     document.getElementById('modal-login').style.display = 'none';
   };
+</script>
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+  AOS.init({ duration: 800, once: true });
 </script>
 
 </body>
