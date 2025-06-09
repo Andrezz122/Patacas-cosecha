@@ -1,5 +1,5 @@
 <?php
-procesar_registro.php
+
 $servername="localhost";
 $username="root";
 $password="";
