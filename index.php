@@ -935,7 +935,7 @@
   </div>
 </div>
 <?php
-id(isset($_POST[Registrar])){
+if(isset($_POST[Registrar])){
 $nombre=$_POST['nombre'];
 $apellido=$_POST['apellido'];
 $edad=$_POST['edad'];
