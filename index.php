@@ -1,15 +1,4 @@
-<?php
-$servername="localhost";
-$username="root";
-$password="";
-$database="tienda_juegos";
 
-$conect = mysqli_connect($servername, $username, $password, $database);
-
-if (!$conect) {
-	die("conexion fallida: " .mysqli_connect_error());
-}
-?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -951,11 +940,13 @@ $nombre=$_POST['nombre'];
 $apellido=$_POST['apellido'];
 $edad=$_POST['edad'];
 $correo=$_POST['correo'];
-$telefono=$_POST['telefono'];
+$telefono=$_POST['telefono']; 
 $password=$_POST['password'];
 $usuario=$_POST['usuario'];
 	
 $query=mysqli_query ($conect,"INSERT INTO usuarios VALUES('','$nombre','$apellido','$edad','$correo','$telefono','$password','$usuario')");
+
+$ejecutarinsertar
 }
 ?>
 <!-- Modal Login -->
