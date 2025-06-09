@@ -3,7 +3,7 @@
 $servername="localhost";
 $username="root";
 $password="";
-$database="tienda_juegos";
+$database="";
 
 $conect = mysqli_connect($servername, $username, $password, $database);
 
@@ -17,7 +17,7 @@ if (!$conect) {
 $servername = "localhost";
 $database = "observador";
 $username = "root";
-$password = "";
+$password = "tienda_juegos";
 
 $conect = mysqli_connect($servername, $username, $password, $database);
 
