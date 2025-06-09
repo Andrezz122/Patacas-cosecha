@@ -194,3 +194,104 @@ h1 {
 #close-cart-btn:hover {
   background: #cf8c00;
 }
+body {
+  background: #121212;
+  color: #eee;
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1 {
+  margin-bottom: 35px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  font-size: 2.5rem;
+  color: #f0a500;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+/* Contenedor de productos más limpio y centrado */
+#productos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 20px;
+}
+
+/* Efecto de tarjeta premium */
+.producto-info {
+  background: #1e1e1e;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 6px 12px rgba(240, 165, 0, 0.25);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.producto-info:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 16px 30px rgba(240, 165, 0, 0.4);
+}
+
+.producto-info img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-bottom: 2px solid #f0a500;
+}
+
+/* Mejores detalles internos */
+.producto-details {
+  padding: 16px 18px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.producto-details h3 {
+  margin: 0 0 10px 0;
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: #f0a500;
+}
+
+.producto-details p {
+  font-size: 0.95rem;
+  color: #ccc;
+  margin-bottom: 14px;
+  flex-grow: 1;
+}
+
+.producto-price {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  font-size: 1rem;
+  color: #fff;
+}
+
+/* Botón bonito */
+.btn-secondary {
+  background: linear-gradient(135deg, #f0a500, #cf8c00);
+  border: none;
+  padding: 10px 16px;
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: 700;
+  color: #121212;
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background: linear-gradient(135deg, #f0a500, #ffb400);
+  box-shadow: 0 0 10px rgba(255, 180, 0, 0.5);
+}
