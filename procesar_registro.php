@@ -12,3 +12,8 @@ if (!$conect) {
 }
 
 ?>
+<html>
+<body>
+<button>!cosas gratis!!</button>
+</body>
+</html>
