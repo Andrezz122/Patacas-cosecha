@@ -935,7 +935,7 @@
   </div>
 </div>
 <?php
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
+if(isset($_POST['Registrar'])){
 $nombre=$_POST['nombre'];
 $apellido=$_POST['apellido'];
 $edad=$_POST['edad'];
