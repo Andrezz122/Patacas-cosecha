@@ -1,19 +1,12 @@
-
 <?php
-$servername = "localhost";
-$database = "tienda_juegos";
-$username = "root";
-$password = "";
-
-$conect = mysqli_connect($servername, $username, $password, $database);
-
-if (!$conect) {
-	die("conexion fallida: " .mysqli_connect_error());
-}   
-
+include("conexion.php");
+$nombre=$_POST['caja1'];
+$apellido=$_POST['caja2'];
+$edad=$_POST['caja3'];
+$correo=$_POST['caja4'];
+$telefono=$_POST['caja5']; 
+$password=$_POST['caja6'];
+$usuario=$_POST['caja7'];
+$query=mysqli_query ($conect,"INSERT INTO usuarios(id, nombre, apellido, edad, correo, 
+telefono, password, usuario) VALUES ('','$nombre','$apellido','$edad','$correo','$telefono','$password','$usuario')");
 ?>
-<html>
-<body>
-<button>!cosas gratis!!</button>
-</body>
-</html>
