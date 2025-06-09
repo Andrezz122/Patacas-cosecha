@@ -945,7 +945,19 @@ if (!$conect) {
     </form>
   </div>
 </div>
-
+<?php
+id(isset($_POST[Registrar])){
+$nombre=$_POST['nombre'];
+$apellido=$_POST['apellido'];
+$edad=$_POST['edad'];
+$correo=$_POST['correo'];
+$telefono=$_POST['telefono'];
+$password=$_POST['password'];
+$usuario=$_POST['usuario'];
+	
+$query=mysqli_query ($conect,"INSERT INTO usuarios VALUES('','$nombre','$apellido','$edad','$correo','$telefono','$password','$usuario')");
+}
+?>
 <!-- Modal Login -->
 <div id="modal-login" class="modal" style="display:none;">
   <div class="modal-content">
